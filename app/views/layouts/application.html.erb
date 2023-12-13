@@ -17,8 +17,7 @@
   <% elsif customer_signed_in? %>
   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
   <%else%>
-  <!--ログインページ-->
-  
+  <%= link_to "ログイン", new_customer_session_path %>
   <% end %>
     <%= yield %>
   </body>
