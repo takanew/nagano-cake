@@ -14,6 +14,13 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  # 暫定的なルート
-  root to: "admin/homes#top"
+  # admin/homesコントローラー　top
+  get '/admin', to: 'admin/homes#top'
+  
+  # public/homesコントローラー　top
+  get '/' => 'public/homes#top'
+  
+  # public/customersコントローラー　show 会員マイページ
+  get '/customers/my_page', to: 'public/customers#show'
+  
 end
