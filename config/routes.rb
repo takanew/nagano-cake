@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  # 暫定的なルート
   root to: "admin/homes#top"
 end
