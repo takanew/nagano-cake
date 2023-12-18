@@ -14,19 +14,32 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  # admin/homesコントローラー　top
-  get '/admin', to: 'admin/homes#top'
   
+  # public/homesコントローラーの記述
   # public/homesコントローラー　top
   get '/' => 'public/homes#top'
   
+  
+  # public/customersコントローラーの記述
   # public/customersコントローラー　show 会員マイページ
   get '/customers/my_page/', to: 'public/customers#show'
-   # public/customersコントローラー　edit 会員マイページ
+   # public/customersコントローラー　edit 会員情報編集ページ
   get '/customers/edit_information', to: 'public/customers#edit' 
+  # public/customersコントローラー　update
+  patch '/customers/update_information', to: 'public/customers#update'
+  # public/customersコントローラー　confirm 顧客の退会確認画面
+  get '/customers/confirm', to: 'public/customers#confirm'
+  # public/customersコントローラー　withdraw　顧客の退会処理（ステータス更新）
+  patch '/customers/withdraw', to: 'public/customers#withdraw'
   
+  
+  # public/ordersコントローラーの記述
   # public/ordersコントローラー　index 注文履歴
   get '/orders', to: 'public/orders#index' 
+  
+  
+   # admin/homesコントローラー　top
+  get '/admin', to: 'admin/homes#top'
   
 end
 
