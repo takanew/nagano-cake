@@ -21,6 +21,16 @@ class Public::CustomersController < ApplicationController
     render :edit
   end 
   end 
+  
+  def confirm 
+    
+  end
+  
+  def withdraw
+    current_customer.update(is_active: false)
+    reset_session
+    redirect_to new_customer_registration_path
+  end
 end
 
   
