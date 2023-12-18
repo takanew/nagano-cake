@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   get '/' => 'public/homes#top'
   
   # public/customersコントローラー　show 会員マイページ
-  get '/customers/my_page', to: 'public/customers#show'
+  get '/customers/my_page/', to: 'public/customers#show'
+   # public/customersコントローラー　edit 会員マイページ
+  get '/customers/edit_information', to: 'public/customers#edit' 
+  
+  # public/ordersコントローラー　index 注文履歴
+  get '/orders', to: 'public/orders#index' 
   
 end
+
