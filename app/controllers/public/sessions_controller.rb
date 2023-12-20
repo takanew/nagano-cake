@@ -12,6 +12,7 @@ class Public::SessionsController < Devise::SessionsController
 # アクティブであるかを判断するメソッド
 def customer_state
   # 【処理内容1】 入力されたemailからアカウントを1件取得
+  # Customer モデルから入力された email を検索し、該当する 1 件を取得する用途
   customer = Customer.find_by(email: params[:customer][:email])
   # 【処理内容2】 アカウントを取得できなかった場合、このメソッドを終了する
   return if customer.nil?
