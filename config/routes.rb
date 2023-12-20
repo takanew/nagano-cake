@@ -47,17 +47,21 @@ Rails.application.routes.draw do
   
   # admin/itemsコントローラーの記述
   # admin/itemsコントローラー　index
-  get '/admins/index', to: 'admin/items#index'
+  # get '/admins/index', to: 'admin/items#index'
   # admin/itemsコントローラー　new
-  get '/admin/items/new', to: 'admin/items#new'
+  # get '/admin/items/new', to: 'admin/items#new'
   # admin/itemsコントローラー　create
-  post '/admin/items', to: 'admin/items#create'
+  # post '/admin/items', to: 'admin/items#create'
   # admin/itemsコントローラー　show
-  get '/admin/items/:id', to: 'admin/items#show'
+  # get '/admin/items/:id', to: 'admin/items#show'
+  # get '/admin/items/:id', to: 'admin/items#show'
   # admin/itemsコントローラー　edit
-  get '/admin/items/:id/edit', to: 'admin/items#edit'
-  # admin/itemsコントローラー　update
-  patch '/admin/items/:id', to: 'admin/items#update'
+  #get '/admin/items/:id/edit', to: 'admin/items#edit'
+  # admin/itemsコントローラー　up
+  
+   namespace :admin do
+     resources :items,only: [:index, :new, :create, :show, :edit, :update]
+   end
   
   
 end
