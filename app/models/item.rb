@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
-  
+
   has_one_attached :item_image
-  
 
   def get_image
     unless item_image.attached?
