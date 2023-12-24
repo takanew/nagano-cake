@@ -2,7 +2,8 @@
 <%= form_with(model: @item, url: admin_items_path, method: :post, local: true) do |form| %>
   <div>
     <%= form.label :商品画像 %>
-    <%= form.file_field :item_image %> <!-- ここにフォームフィールドを追加します -->
+    <!--画像の設定は変更あるかも-->
+    <%= form.file_field :item_image %> 
   </div>
 
   <div>
@@ -13,11 +14,6 @@
   <div>
     <%= form.label :商品説明 %>
     <%= form.text_area :introduction %>
-  </div>
-
-  <div>
-    <%= form.label :ジャンル %>
-    <%= form.select :genre, ["ケーキ", "プリン", "焼き菓子", "キャンディ"] %>
   </div>
 
   <div>

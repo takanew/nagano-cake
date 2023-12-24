@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   # public/ordersコントローラーの記述
   # public/ordersコントローラー　index 注文履歴
   get '/orders', to: 'public/orders#index'
-
+  
 
   # admin/homesコントローラーの記述
   # admin/homesコントローラー　top
