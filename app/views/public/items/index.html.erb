@@ -1,0 +1,12 @@
+<!--total_countはkaminari使用時にレコード総数を示すAPI（自身が管理しているサービスを利用できるようにするためのインターフェース）-->
+<h1>商品一覧（全<%= @items.total_count %>件）</h1>
+
+<% @items.each do |item| %>
+  <div>
+    <%= image_tag item.get_image %>
+    <%= link_to item.name, item_path(item) %>
+    <%= item.price %>
+  </div>
+<% end %>
+
+<%= paginate @items %>

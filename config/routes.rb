@@ -35,6 +35,12 @@ Rails.application.routes.draw do
   patch '/customers/withdraw', to: 'public/customers#withdraw'
 
 
+  # public/itemsコントローラーの記述
+  # scope / namespace / moduleの違い
+  scope module: :public do
+    resources :items,only: [:index, :show]
+  end 
+  
   # public/ordersコントローラーの記述
   # public/ordersコントローラー　index 注文履歴
   get '/orders', to: 'public/orders#index'
@@ -43,6 +49,7 @@ Rails.application.routes.draw do
   # admin/homesコントローラーの記述
   # admin/homesコントローラー　top
   get '/admin', to: 'admin/homes#top'
+  
 
   #　admin itemsコントローラー 
    namespace :admin do

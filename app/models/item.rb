@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
 
   has_one_attached :item_image
+  
+  validates :name, :introduction, :price, presence: true
 
   def get_image
     unless item_image.attached?
