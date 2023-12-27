@@ -15,7 +15,7 @@
     <tr>
       <td><%= customer.id %></td>
       <!--変数展開#{}の活用　""で囲み変数展開を有効化-->
-      <td><%= "#{customer.last_name} #{customer.first_name}" %></td>
+      <td><%= link_to "#{customer.last_name} #{customer.first_name}", admin_customer_path(customer) %></td>
       <td><%= customer.email %></td>
       <td>
         <% if customer.is_active %>
