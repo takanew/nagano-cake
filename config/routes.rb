@@ -51,10 +51,16 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin/homes#top'
   
 
-  #　admin itemsコントローラー 
-   namespace :admin do
-     resources :items,only: [:index, :new, :create, :show, :edit, :update]
-   end
+  # admin itemsコントローラー 
+  namespace :admin do
+    resources :items,only: [:index, :new, :create, :show, :edit, :update]
+  end
+  
+  
+  # admin customerコントローラー 
+  namespace :admin do
+    resources :customers,only: [:index,:show, :edit, :update]
+  end
   
   
 end
