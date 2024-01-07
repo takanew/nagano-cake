@@ -1,5 +1,4 @@
 
-
   <div >
     <%= image_tag @item.get_image %>
   </div>
@@ -9,4 +8,12 @@
     <p><%= @item.introduction %></p>
     <p><%= @item.price %></p>
   </div>
+  
+  <%= form_with(model: @cart_item, url: cart_items_path, method: :post) do |form| %>
+  <div>
+    <%= form.hidden_field :item_id, value: @item.id %>
+    <%= form.select :amount, *[1..10] %>
+    <%= form.submit "カートに入れる" %>
   </div>
+  <% end %>
+  

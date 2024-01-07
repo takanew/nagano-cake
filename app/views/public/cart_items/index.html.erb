@@ -1,0 +1,32 @@
+<div>
+  <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete %>
+</div>
+
+<table>
+  <thead>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </thead>
+  <tbody>
+  <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td>
+        <%= image_tag(cart_item.item.get_image, height: 50) %>
+        <%= cart_item.item.name %>
+      </td>
+      <td><%= cart_item.item.with_tax_price %></td>
+      <td>
+        <%= select_tag "cart_item[amount]", options_for_select(1..10, cart_item.amount), class: "amount-select" %>
+        <%= link_to "変更", update_cart_item_path(cart_item), method: :patch, remote: true %>
+      </td>
+      <td><%= cart_item.subtotal %></td>
+      <% @total += cart_item.subtotal %>
+      <td><%= link_to "削除", destroy_cart_item_path(cart_item), method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "買い物を続ける", "/" %>

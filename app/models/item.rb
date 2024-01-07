@@ -2,6 +2,8 @@ class Item < ApplicationRecord
 
   has_one_attached :item_image
   
+  has_many :cart_items, dependent: :destroy
+  
   validates :name, :introduction, :price, presence: true
 
   def get_image
@@ -12,4 +14,9 @@ class Item < ApplicationRecord
     item_image
   end
 
+  # 消費税を求めるメソッド
+  def with_tax_price
+    (price * 1.1).floor
+  end
+  
 end

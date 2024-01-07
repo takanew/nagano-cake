@@ -4,49 +4,52 @@
   <div>
     会員ID: <%= @customer.id %>
   </div>
-  
+
   <div>
+  <!--form_labelは使用しなくてもいい、ユーザビリティの観点から使用は推奨されるみたい-->
     氏名:
     <%= form.text_field :last_name %>
     <%= form.text_field :first_name %>
   </div>
-  
+
   <div>
     フリガナ:
     <%= form.text_field :last_name_kana %>
     <%= form.text_field :first_name_kana %>
   </div>
-  
+
   <div>
     郵便番号:
     <%= form.text_field :postal_code %>
   </div>
-  
+
   <div>
     住所:
     <%= form.text_field :address %>
   </div>
-  
+
   <div>
     電話番号:
     <%= form.text_field :telephone_number %>
   </div>
-  
+
   <div>
     メールアドレス:
     <%= form.email_field :email %>
   </div>
-  
+
   <div>
     会員ステータス:
+    <!--form.radio_buttonメソッド、引数にカラムと値（真偽）-->
     <%= form.radio_button :is_active, true %>
+    <!--form.labelで上記メソッドでしてしたradio_buttonの関連ラベルを作成　カラム、上記で示したtrueを表すの表示の仕方-->
     <%= form.label :is_active, "有効" %>
     <%= form.radio_button :is_active, false %>
     <%= form.label :is_active, "無効" %>
   </div>
-  
+
   <div>
     <%= form.submit "変更を保存" %>
   </div>
-  
+
 <% end %>

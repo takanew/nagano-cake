@@ -39,29 +39,41 @@ Rails.application.routes.draw do
   # scope / namespace / moduleの違い
   scope module: :public do
     resources :items,only: [:index, :show]
-  end 
-  
+  end
+
+
+  # public/cart_itemsコントローラーの記述
+  scope module: :public do
+  resources :cart_items, only: [:index, :create]
+  patch '/cart_items/:id', to: 'cart_items#update', as: 'update_cart_item'
+  delete '/cart_items/destroy_all', to: 'cart_items#destroy_all', as: 'destroy_all_cart_items'
+  delete '/cart_items/:id', to: 'cart_items#destroy', as: 'destroy_cart_item'
+  end
+
   # public/ordersコントローラーの記述
-  # public/ordersコントローラー　index 注文履歴
-  get '/orders', to: 'public/orders#index'
-  
+  scope module: :public do
+  resources :orders,only: [:new, :create, :index, :show]
+  post '/orders/confirm', to: 'orders#confirm', as: 'confirm_order'
+  get '/orders/success', to: 'orders#success', as: 'success_order'
+  end
+
 
   # admin/homesコントローラーの記述
   # admin/homesコントローラー　top
   get '/admin', to: 'admin/homes#top'
-  
 
-  # admin itemsコントローラー 
+
+  # admin itemsコントローラー
   namespace :admin do
     resources :items,only: [:index, :new, :create, :show, :edit, :update]
   end
-  
-  
-  # admin customerコントローラー 
+
+
+  # admin customerコントローラー
   namespace :admin do
     resources :customers,only: [:index,:show, :edit, :update]
   end
-  
-  
+
+
 end
 
