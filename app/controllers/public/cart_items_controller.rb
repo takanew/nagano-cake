@@ -6,6 +6,7 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
     cart_item.item_id = cart_item_params[:item_id]
+  #  params[:cart_item][:item_id]でcart_itemに追加したitem_idを定義し、find_by(item_id)で既存のモデルに検索をかけている
     if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
   # cart_item.amount = cart_item.amount + params[:cart_item][:amount].to_i
@@ -22,6 +23,19 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
     @total = 0
+  # total（合計）の算出
+  # subtoalメソッドはcart_item.rbで定義
+  # 全部のレコードが取り出されるまでループし、@totalは累積されていく。全部取り出されてend
+    @cart_items.each do |cart_item|
+    @total += cart_item.subtotal
+    end
+  end
+  
+  def update
+    cart_item = current_customer.cart_items
+    # amount: params[:cart_item][:amount].to_iは、ハッシュ。amount:がキー、params~が値
+    cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
 
   # 暫定的に作成
