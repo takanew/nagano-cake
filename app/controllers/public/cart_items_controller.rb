@@ -33,7 +33,6 @@ class Public::CartItemsController < ApplicationController
   
   def update
     cart_item = current_customer.cart_items
-    # amount: params[:cart_item][:amount].to_iは、ハッシュ。amount:がキー、params~が値
     cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
