@@ -8,10 +8,12 @@ class Public::OrdersController < ApplicationController
   
   def confirm
     @order = Order.new(order_params)
-    if @order.valid?
-      redirect_to confirm_order_path
-    else
-      render :new
+    # ラジオボタン０が選択された場合にorderモデルにどんなデータを入れるか指定する。
+    # なお、今回は０、２のみで２については上記の@order = Order.new(order_params)で指定してるから、ifの条件分岐はいらない
+    if  params[:order][:select_address] == "0"
+        @order.postal_code = current_customer.postal_code
+        @order.address = current_customer.address
+        @order.recipient = current_customer.first_name + current_customer.last_name
     end
   end
   
@@ -30,7 +32,7 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :recipient)
   end
   
 end

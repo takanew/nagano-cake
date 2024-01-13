@@ -2,6 +2,7 @@
   <h1>注文情報入力</h1>
 
   <h2>支払い方法</h2>
+  <!--支払い方法はradio_buttonのプロパティにorderモデルのカラムを入れてるから、値が直に入る-->
   <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
   <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
 
@@ -11,14 +12,15 @@
   <h2>お届け先</h2>
 
   <!--ご自身の住所-->
-  <%= f.radio_button :address_option, @customer.full_address %>
-  <%= f.label :address_own_address, "ご自身の住所" %>
+  <!--ラジオボタンのプロパティに架空のカラムを設定し、値も数字を入れ、特定のラジオボタンを識別するようにする-->
+  <%= f.radio_button :select_address, 0 %>
+  <%= f.label :address_own_address, "ご自身の住所 #{@customer.full_address} " %>
 
   <!--新しいお届け先-->
-  <!--newが以下の入力フォームの内容を示している。address_optionプロパティの値としてnew-->
-  <%= f.radio_button :address_option, 'new' %>
+  <%= f.radio_button :select_address, 2 %>
   <%= f.label :new_address_option,"新しいお届け先" %>
 
+<!--form_withの記述は自動的にアクションのモデル.newに格納される-->
       <%= f.label :postal_code,"郵便番号(ハイフンなし)" %>
       <%= f.text_field :postal_code %>
 
@@ -28,7 +30,7 @@
       <%= f.label :recipient, "宛名" %>
       <%= f.text_field :recipient %>
 
-  <% end %>
+  
 
   <%= f.submit "確認画面に進む" %>
 
