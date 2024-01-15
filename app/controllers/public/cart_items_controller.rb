@@ -30,7 +30,7 @@ class Public::CartItemsController < ApplicationController
     @total += cart_item.subtotal
     end
   end
-  
+
   def update
     cart_item = current_customer.cart_items
     cart_item.update(cart_item_params)
