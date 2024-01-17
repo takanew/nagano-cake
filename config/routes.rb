@@ -52,9 +52,9 @@ Rails.application.routes.draw do
 
   # public/ordersコントローラーの記述
   scope module: :public do
+  get '/orders/success', to: 'orders#success', as: 'success_order'
   resources :orders,only: [:new, :create, :index, :show]
   post '/orders/confirm', to: 'orders#confirm', as: 'confirm_order'
-  get '/orders/success', to: 'orders#success', as: 'success_order'
   end
 
 

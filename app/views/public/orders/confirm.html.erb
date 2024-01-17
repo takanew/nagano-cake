@@ -39,7 +39,8 @@
 
   <p><%= @order.order_address %></p>
   <!-- お届け先の情報を一行で表示。 -->
-
+  <%= f.hidden_field :postage, value: 800 %>
+  <%= f.hidden_field :payment_amount, value: @total %>
 
   <%= f.submit "注文を確定する" %> 
   
