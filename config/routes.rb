@@ -74,6 +74,10 @@ Rails.application.routes.draw do
     resources :customers,only: [:index,:show, :edit, :update]
   end
 
+ # admin ordersコントローラー  
+  namespace :admin do
+  resources :orders, only: [:show]
+  end
 
 end
 
