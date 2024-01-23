@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
     if  params[:order][:select_address] == "0"
         @order.postal_code = current_customer.postal_code
         @order.address = current_customer.address
-        @order.recipient = current_customer.first_name + current_customer.last_name
+        @order.recipient = current_customer.last_name + current_customer.first_name
     end
     @total = 0
     @cart_items.each do |cart_item|
@@ -47,10 +47,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-  @orders = current_customer.orders
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
