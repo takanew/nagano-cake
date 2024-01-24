@@ -1,12 +1,23 @@
 <h1>商品一覧（全<%= @items.total_count %>件）</h1>
 
-<% @items.each do |item| %>
-  <div>
-    <%= image_tag item.get_image %>
-    <%= link_to item.name, admin_item_path(item) %>
-    <%= item.price %>
-  </div>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜き価格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <% @items.each do |item| %>
+      <td><%= item.id %></td>
+      <td><%= link_to item.name, admin_item_path(item) %></td>
+      <td><%= item.price %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
 
 <%= link_to "新規登録", new_admin_item_path %>
 <%= paginate @items %>
