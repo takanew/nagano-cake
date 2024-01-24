@@ -12,25 +12,38 @@
 
   <body>
 
-  <% if admin_signed_in? %>
-  <%= link_to '商品一覧', admin_items_path %>
-  <%= link_to '会員一覧', admin_customers_path %>
-  <%= link_to '注文履歴一覧', admin_path %>
-  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-  <% elsif customer_signed_in? %>
-  <%= link_to "マイページ", customers_my_page_path %>
-  <%= link_to "商品一覧", items_path %>
-  <%= link_to "カート", cart_items_path %>
-  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-  <%else%>
-  <%= link_to "About", about_path %>
-  <%= link_to "商品一覧", items_path %>
-  <%= link_to "新規登録", new_customer_registration_path %>
-  <%= link_to "ログイン", new_customer_session_path %>
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <div class="d-flex justify-content-center align-items-center border border-dark rounded p-2">
+        <span class="ms-2">LOGO</span>
+      </div>
+    </a>
+    <!--ここの記述削除-->
 
+    <div>
+      <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+          <%= link_to '商品一覧', admin_items_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to '会員一覧', admin_customers_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to '注文履歴一覧', admin_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary text-dark' %>
+        <% elsif customer_signed_in? %>
+          <%= link_to "マイページ", customers_my_page_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to "商品一覧", items_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to "カート", cart_items_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-outline-secondary text-dark' %>
+        <% else %>
+          <%= link_to "About", about_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to "商品一覧", items_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-outline-secondary text-dark me-3' %>
+          <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-outline-secondary text-dark' %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-
-  <% end %>
     <%= yield %>
   </body>
 </html>
