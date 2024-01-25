@@ -1,4 +1,4 @@
-<h1>注文詳細</h1>
+<h1>注文履歴詳細</h1>
 
 <h2>注文情報</h2>
 <table>
@@ -31,7 +31,7 @@
     <td><%= @order.postage %>円</td>
   </tr>
   <tr>
-    <th>ご請求額合計</th>
+    <th>ご請求額</th>
     <td><%= @order.payment_amount + @order.postage %>円</td>
   </tr>
 </table>
@@ -40,16 +40,16 @@
 <table>
   <tr>
     <th>商品</th>
-    <th>単価</th>
+    <th>単価（税込）</th>
     <th>個数</th>
     <th>小計</th>
   </tr>
   <% @order.order_items.each do |item| %>
     <tr>
       <td><%= item.item.name %></td>
-      <td><%= item.item.with_tax_price %>円</td>
-      <td><%= item.amount %>個</td>
-      <td><%= item.item.with_tax_price * item.amount %>円</td>
+      <td><%= item.item.with_tax_price %></td>
+      <td><%= item.amount %></td>
+      <td><%= item.item.with_tax_price * item.amount %></td>
     </tr>
   <% end %>
 </table>

@@ -6,13 +6,13 @@
   <div >
     <h2><%= @item.name %></h2>
     <p><%= @item.introduction %></p>
-    <p><%= @item.price %></p>
+    <p>¥<%= @item.with_tax_price %>（税込）</p>
   </div>
   
   <%= form_with(model: @cart_item, url: cart_items_path, method: :post) do |form| %>
   <div>
     <%= form.hidden_field :item_id, value: @item.id %>
-    <%= form.select :amount, *[1..10] %>
+    <%= form.select :amount, *[1..10] , selected: "個数選択" %>
     <%= form.submit "カートに入れる" %>
   </div>
   <% end %>

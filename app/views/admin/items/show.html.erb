@@ -1,3 +1,5 @@
+  <h2>商品詳細</h2>
+  
   <div >
     <%= image_tag @item.get_image %>
   </div>
@@ -5,7 +7,7 @@
   <div >
     <p>商品名    <%= @item.name %></p>
     <p>商品説明  <%= @item.introduction %></p>
-    <p>税込価格 （税抜き価格）  <%= @item.with_tax_price %>円 <%= @item.price %>円</p>
+    <p>税込価格 （税抜価格）  <%= @item.with_tax_price %>円 <%= @item.price %>円</p>
   </div>
 
 <%= link_to "編集する", edit_admin_item_path(@item) %>
