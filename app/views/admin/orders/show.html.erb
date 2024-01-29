@@ -18,20 +18,20 @@
   <tbody>
     <% total_price = 0 %>
     <% @order.order_items.each do |item| %>
-      <% subtotal = item.purchase_price * item.amount %>
-      <% total_price += subtotal %>
+      <% number_with_delimiter(subtotal = item.purchase_price * item.amount) %>
+      <% number_with_delimiter(total_price += subtotal) %>
       <tr>
         <td><%= item.item.name %></td>
-        <td><%= item.purchase_price %></td>
+        <td><%= number_with_delimiter(item.purchase_price) %></td>
         <td><%= item.amount %></td>
-        <td><%= subtotal %></td>
+        <td><%= number_with_delimiter(subtotal) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p><strong>商品合計:</strong> <%= total_price %>円</p>
+<p><strong>商品合計:</strong> <%= number_with_delimiter(total_price) %>円</p>
 <p><strong>送料:</strong> 800円</p>
-<p><strong>請求金額:</strong> <%= total_price + 800 %>円</p>
+<p><strong>請求金額:</strong> <%= number_with_delimiter(total_price + 800) %>円</p>
 
 

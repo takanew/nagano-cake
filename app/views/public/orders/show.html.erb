@@ -23,7 +23,7 @@
   <tr>
     <th>商品合計</th>
     <td>
-      <%= @order.payment_amount %>円
+      <%= number_with_delimiter(@order.payment_amount) %>円
     </td>
   </tr>
   <tr>
@@ -32,7 +32,7 @@
   </tr>
   <tr>
     <th>ご請求額</th>
-    <td><%= @order.payment_amount + @order.postage %>円</td>
+    <td><%= number_with_delimiter(@order.payment_amount + @order.postage) %>円</td>
   </tr>
 </table>
 
@@ -47,9 +47,9 @@
   <% @order.order_items.each do |item| %>
     <tr>
       <td><%= item.item.name %></td>
-      <td><%= item.item.with_tax_price %></td>
+      <td><%= number_with_delimiter(item.item.with_tax_price) %></td>
       <td><%= item.amount %></td>
-      <td><%= item.item.with_tax_price * item.amount %></td>
+      <td><%= number_with_delimiter(item.item.with_tax_price * item.amount) %></td>
     </tr>
   <% end %>
 </table>
